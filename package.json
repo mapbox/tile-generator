@@ -1,0 +1,23 @@
+{
+  "name": "tile-generator",
+  "version": "1.0.0",
+  "description": "Generate a stream of tiles in a bbox",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "npm run lint",
+    "lint": "eslint index.js test.js",
+    "test": "tap -Rspec test.js"
+  },
+  "author": "Tim Channell",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^1.10.3",
+    "eslint-config-mourner": "^1.0.1",
+    "tap": "^2.3.4",
+    "tile-cover": "^3.0.1",
+    "turf-bbox-polygon": "^1.0.2"
+  },
+  "dependencies": {
+    "readable-stream": "^2.0.5"
+  }
+}
