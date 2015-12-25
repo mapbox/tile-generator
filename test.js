@@ -1,4 +1,4 @@
-var TileGenerator = require('./'),
+var tileGenerator = require('./'),
   bboxPolygon = require('turf-bbox-polygon'),
   tileCover = require('tile-cover'),
   test = require('tap').test;
@@ -21,7 +21,7 @@ var sortFn = function (a, b) {
   test('tile-generator -- DC at z' + zoom, function (t) {
     var cover = tileCover.tiles(bboxPolygon(bbox).geometry, {min_zoom: zoom, max_zoom: zoom});
     var tiles = [];
-    new TileGenerator(zoom, bbox)
+    tileGenerator(zoom, bbox)
       .on('data', function (tile) {
         tiles.push(tile);
       })
@@ -37,7 +37,7 @@ var sortFn = function (a, b) {
 
 test('tile-generator -- no bbox runs the world', function (t) {
   var tiles = [];
-  new TileGenerator(1)
+  tileGenerator(1)
     .on('data', function (tile) {
       tiles.push(tile);
     })

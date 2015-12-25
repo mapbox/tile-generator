@@ -1,5 +1,5 @@
 var Benchmark = require('benchmark');
-var TileGenerator = require('./');
+var tileGenerator = require('./');
 var tileCover = require('tile-cover');
 var bboxPolygon = require('turf-bbox-polygon');
 
@@ -18,7 +18,7 @@ suite
   })
   .add('tile-generator#tile-generator', function (deferred) {
     var tiles = [];
-    new TileGenerator(bbox, 18)
+    tileGenerator(bbox, 18)
       .on('data', function (dt) {
         tiles.push(dt);
       })

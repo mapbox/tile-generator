@@ -49,4 +49,8 @@ TileGenerator.prototype._read = function () {
   return this.push(next);
 };
 
-module.exports = TileGenerator;
+module.exports = function (zoom, bbox, options) {
+  return new TileGenerator(zoom, bbox, options);
+};
+
+module.exports.TileGenerator = TileGenerator;
