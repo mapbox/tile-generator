@@ -1,6 +1,6 @@
 {
   "name": "tile-generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate a stream of tiles in a bbox",
   "main": "index.js",
   "repository": {
