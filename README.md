@@ -16,7 +16,7 @@ tileGenerator(12, [0, 30, 5, 35])
     tiles.push(tile);
   })
   .on('end', function () {
-	console.log(JSON.stringify(tiles);
+    console.log(JSON.stringify(tiles);
   });
 ```
 
@@ -27,5 +27,5 @@ var tileGenerator = require('tile-generator');
 
 tileGenerator(12)
   .on('data', function (tile) {
-  	console.log(tile);
+    console.log(tile);
   });
