@@ -15,6 +15,7 @@
     "lint": "eslint index.js test.js",
     "test": "tap -Rspec test.js"
   },
+  "bin": "tile-generator",
   "author": "Tim Channell",
   "license": "ISC",
   "devDependencies": {
@@ -26,6 +27,7 @@
     "turf-bbox-polygon": "^1.0.2"
   },
   "dependencies": {
-    "readable-stream": "^2.0.5"
+    "readable-stream": "^2.0.5",
+    "yargs": "^11.0.0"
   }
 }

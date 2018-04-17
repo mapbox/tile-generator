@@ -29,3 +29,7 @@ tileGenerator(12)
   .on('data', function (tile) {
     console.log(tile);
   });
+
+### cli
+
+    tile-generator --minzoom 0 --maxzoom 10 --bbox -180,-85,180,85

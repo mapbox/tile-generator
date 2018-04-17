@@ -1,0 +1,46 @@
+#!/usr/bin/env node
+
+const tileGenerator = require('./');
+const assert = require('assert');
+const argv = require('yargs')
+    .usage("$0 --minzoom 0 --maxzoom 10 --bbox east,south,west,north")
+    .option('minzoom', {
+        alias: 'z',
+        type: 'number',
+        requiresArg: true,
+    })
+    .option('maxzoom', {
+        alias: 'Z',
+        type: 'number',
+        requiresArg: true,
+    })
+    .option('bbox', {
+        type: 'string',
+        requiresArg: true
+    })
+    .help('h', 'Show help').alias('h', 'help')
+    .argv;
+
+const min_zoom = argv.minzoom;
+const max_zoom = argv.maxzoom;
+const bbox = argv.bbox.split(',').map((coord) => { return Number(coord); });
+
+assert(min_zoom <= max_zoom, 'min_zoom must be less than or equal to max_zoom');
+assert(min_zoom >= 0, 'min_zoom must be greater than or equal to 0');
+assert(bbox.length === 4, 'bbox must be 4 comma separated coordinates');
+assert(bbox[0] < bbox[2], 'bbox east must be less than bbox west');
+assert(bbox[1] < bbox[3], 'bbox south must be less than bbox north');
+
+tilesForZoom(min_zoom);
+
+function tilesForZoom(z) {
+    tileGenerator(z, bbox)
+        .on('data', function (tile) {
+            console.log(`[${tile[0]}, ${tile[1]}, ${tile[2]}]`);
+        })
+        .on('end', function () {
+            if (z < max_zoom) {
+                tilesForZoom(z + 1);
+            }
+        });
+}
