@@ -3,7 +3,7 @@
 const tileGenerator = require('./');
 const assert = require('assert');
 const argv = require('yargs')
-    .usage("$0 --minzoom 0 --maxzoom 10 --bbox east,south,west,north")
+    .usage("$0 --minzoom 0 --maxzoom 10 --bbox west,south,east,north")
     .option('minzoom', {
         alias: 'z',
         type: 'number',
@@ -28,7 +28,7 @@ const bbox = argv.bbox.split(',').map((coord) => { return Number(coord); });
 assert(min_zoom <= max_zoom, 'min_zoom must be less than or equal to max_zoom');
 assert(min_zoom >= 0, 'min_zoom must be greater than or equal to 0');
 assert(bbox.length === 4, 'bbox must be 4 comma separated coordinates');
-assert(bbox[0] < bbox[2], 'bbox east must be less than bbox west');
+assert(bbox[0] < bbox[2], 'bbox west must be less than bbox east');
 assert(bbox[1] < bbox[3], 'bbox south must be less than bbox north');
 
 tilesForZoom(min_zoom);
